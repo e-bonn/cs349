@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- For mobile viewing -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
+    <style>
+        * {
+          text-align: justify;
+      }
+      .container {
+        max-width: 800px;
+        margin-bottom: 50px;
+    }
+    .img-responsive {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        max-width: 90%;
+        max-height: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .due {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 20px;
+        color: grey;
+    }
+    header {
+        margin-bottom: 20px;
+    }
+    h2 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 28px;
+    }
+    p, li {
+        line-height: 30px;
+        font-size: 16px;
+    }
+    .panel > .panel-heading {
+        background-color: black;
+        color: white;
+    }
+    em {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2>Guide - Callbacks and Promises</h2>
+          </div>
+          <div class="panel-body">
+            <h3>Handling Asynchronous Function Calls</h3>
+            <p>Retrieving data over the Internet is asynchronous, meaning that you can't get your result right away, and you don't know if the function is going to succeed, fail, or timeout. Since JavaScript is single-threaded, you don't want to wait indefinitely for the response to come back and ignore all the user input. Therefore, these methods that interact with a web service have different ways of returning results from synchronous (and blocking) function calls.</p>
+            <p>There are two ways of handling asynchronous function calls: the old way is to use callbacks and the new way is to use promises. There are many posts at large explaining why you should use promises instead of callbacks, e.g., <a href="http://codetunnel.io/what-are-callbacks-and-promises/">What are callbacks and promises</a>, <a href="http://12devs.co.uk/articles/promises-an-alternative-way-to-approach-asynchronous-javascript/">Promises – an alternative way to approach asynchronous JavaScript</a>, etc.</p>
+            <h3>Callbacks</h3>
+            <p>Using callbacks means to pass in a function as the last parameter when you call the asynchronous function. When the asynchronous function gets the result, regardless of success of failure, it should call the callback function.</p>
+            <p>The de facto signature of the callback function always has error as its first parameter. The rest parameters can be data that you want to return. That is, the callback function should always be defined in the form of</p>
+            <pre>function callback(error, data1, data2, data3, ...)</pre>
+            <p>Let's say we want to wrap an HTTP API that retrieves the local weather: </p>
+            <pre>
+/* Note: the following is only a pseudocode to help explain concepts. */
+
+function getWeather(location, callback) {
+    $.get("https://example.com/get-weather?key=12345", {location: location})
+    .succeed(function(response) {
+        callback(null, response.data);
+    })
+    .fail(function() {
+        callback(new Error("something is wrong."));
+    });
+}
+
+/* When calling getWeather(), you call with a callback function */
+getWeather(location, function(error, weather) {
+    if (error) {
+        // do something 
+        return;
+    }
+    // do something with weather.
+});
+            </pre>
+            <p>This function accepts a first parameter that specifies the location and a second parameter that is a callback function.</p>
+            <p>Inside, we send an HTTP GET request and retrieve its response. When the response indicates succeeded ( <code>succeed()</code> ), we call the callback function with <code>null</code> (because there's no error) and <code>response.data</code> (data that we want to return). In case of failure ( <code>fail()</code> ), we call the callback with an <code>Error</code> object.</p>
+            <h3>Promises</h3>
+            <p>The problem of using callbacks, is that when multiple asynchronous function calls stack together, which happens a lot, the code marches faster to the right than to the bottom. This is called the Pyramid of Doom. See <a href="http://tritarget.org/blog/2012/11/28/the-pyramid-of-doom-a-javascript-style-trap/">Pyramid of Doom in JavaScript</a>.</p>
+            <p>In tackling this problem, people proposed <a href="http://www.html5rocks.com/en/tutorials/es6/promises/">promises</a>. The idea is that instead of using callbacks when the function is done, let's just return an empty shell called promise that at some time in the future, asynchronous data will be filled in. The same exmaple becomes something like:</p>
+            <pre>
+/* Note: the following is only a pseudocode to help explain concepts. */
+
+function getWeather(location, callback) {
+    var deferred = Q.defer();
+    $.get("https://example.com/get-weather?key=12345", {location: location})
+    .succeed(function(response) {
+        deferred.resolve(response.data);
+    })
+    .fail(function() {
+        deferred.reject();
+    });
+    return deferred.promise;
+}
+
+/* After calling getWeather(), you follow then() or fail() to deal with different cases.*/
+getWeather(location)
+.then(function(weather) {
+    // do something with weather.
+})
+.fail(function() {
+    // do something when error happens.
+});
+            </pre>
+            <p>In this example, we are creating a deferred object which collects what to do when succeeded ( <code>resolve()</code>) and what to do when failed ( <code>reject()</code> ), and will notify the promise when they happen. We return the promise and handle different cases with <code>then()</code> (succeeded) or <code>fail()</code> (failed).</p>
+          </div>
+      </div>
+
+</div>
+
+</body>
+</html>
+

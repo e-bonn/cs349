@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- For mobile viewing -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
+    <style>
+        * {
+          text-align: justify;
+      }
+      .container {
+        max-width: 800px;
+        margin-bottom: 50px;
+    }
+    .img-responsive {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        max-width: 90%;
+        max-height: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .due {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 20px;
+        color: grey;
+    }
+    header {
+        margin-bottom: 20px;
+    }
+    h2 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 28px;
+    }
+    p, li {
+        line-height: 30px;
+        font-size: 16px;
+    }
+    .panel > .panel-heading {
+        background-color: black;
+        color: white;
+    }
+    em {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="container">
+
+    <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2>Guide - Module Pattern with Closures</h2>
+          </div>
+          <div class="panel-body">
+            <p>JavaScript variables can belong to the local or global scope. Private variables can be made possible with <a href="http://www.w3schools.com/js/js_function_closures.asp">closures</a>. In other words, we could use this feature of the language to implement the <a href="http://www.joezimjs.com/javascript/javascript-closures-and-the-module-pattern/">Module Pattern</a>. In this way, the variables in different modules won't mess up with each other. For example, <code>ModelModule</code> is defined as a self-invoking anonymouse function: </p>
+            <pre>
+var ModelModule = (function() {
+
+})();
+            </pre>
+            <p>Besides, we could inject dependencies by passing other modules to the function. For example, <code>ViewModule</code> is defined in this way:</p>
+            <pre>
+var ViewModule = (function(BuildingModel) {
+    
+})(ModelModule.BuildingModel);
+            </pre>
+            <p>We injected <code>ModelModule.BuildingModel</code> into <code>ViewModule</code> and shortened the name as <code>BuildingModel</code>.</p>
+            </div>
+</div>
+
+</body>
+</html>
+

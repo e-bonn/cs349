@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- For mobile viewing -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
+    <style>
+        * {
+          text-align: justify;
+      }
+      .container {
+        max-width: 800px;
+        margin-bottom: 50px;
+    }
+    .img-responsive {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        max-width: 90%;
+        max-height: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .due {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 20px;
+        color: grey;
+    }
+    header {
+        margin-bottom: 20px;
+    }
+    h2 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 28px;
+    }
+    p, li {
+        line-height: 30px;
+        font-size: 16px;
+    }
+    .panel > .panel-heading {
+        background-color: black;
+        color: white;
+    }
+    em {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>Guide - Setup Yeoman Workflow</h2>
+        </div>
+        <div class="panel-body">
+            <h3>Tools</h3>
+            <p>Front-end web developers frequently use <a target="_new_tab" href="http://yeoman.io/learning/">Yeoman</a> for improving their productivity. It is comprised of three core tools: </p>
+            <ul>
+            <li>A scaffolding tool, <code>yo</code>.</li>
+            <li>Package managers, <code>bower</code> and <code>npm</code>.</li>
+            <li>A build tool, <code>grunt</code>.</li>
+            </ul>
+            <p>In addition, CSS preprocessors such as <code>Sass</code> are typically used. You will need to install <code>compass</code> for this.</p>
+            <hr>
+            <h3>Installation Guide</h3>
+            <h4>Environments</h4>
+            <p>We need to install the following environments to run the framework. Guides for installation are provided in their websites: </p>
+            <ul>
+                <li><a href="https://nodejs.org/">Node.js</a> and its package manager <code>npm</code>.</li>
+                <li><a href="https://www.ruby-lang.org/en/documentation/installation/">Ruby</a> and its package manager <code>gem</code>.</li>
+            </ul>
+            <p>We use <code>npm</code> to install <code>yo</code>, <code>bower</code>, and <code>grunt</code>:</p>
+            <pre>sudo npm install -g yo bower grunt-cli</pre>
+            <p>We use <code>gem</code> to install <a href="http://compass-style.org/install/">compass</a>:
+<pre>
+gem update --system
+gem install compass
+</pre>
+            <h4>Dependencies</h4>
+            <p>We have already scaffolded the project structure with <code>yo</code> in the starter code.</p>
+            <p>Once you get the starter code, you will need to install dependencies with <code>npm</code> and <code>bower</code>. Dependencies are defined in <code>package.json</code> and <code>bower.json</code>, respectively. Issue the following commands at the project root will install the dependencies for you:</p>
+            <pre>
+sudo npm install
+bower install</pre>
+            <p>You will see two directories being created: <code>node_modules</code> and <code>bower_components</code>. These are where the dependencies are stored. </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

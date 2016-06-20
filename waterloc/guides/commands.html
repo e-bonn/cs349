@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- For mobile viewing -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+
+    <style>
+        * {
+          text-align: justify;
+      }
+      .container {
+        max-width: 800px;
+        margin-bottom: 50px;
+    }
+    .img-responsive {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        max-width: 90%;
+        max-height: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .due {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 20px;
+        color: grey;
+    }
+    header {
+        margin-bottom: 20px;
+    }
+    h2 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 28px;
+    }
+    p, li {
+        line-height: 30px;
+        font-size: 16px;
+    }
+    .panel > .panel-heading {
+        background-color: black;
+        color: white;
+    }
+    em {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>Guide - Commands in Yeoman Workflow</h2>
+        </div>
+        <div class="panel-body">
+            <h3>Development</h3>
+            <h4>Overview</h4>
+            <p>There are only four commands that you need to know about:</p>
+            <ul>
+                <li><code>grunt build</code> for building the project.</li>
+                <li><code>grunt serve</code> for starting the server.</li>
+                <li><code>grunt jshint</code> for linting syntax errors in JavaScript.</li>
+                <li><code>bower install --save &lt;dependency_name&gt;</code> for installing new dependencies.</li>
+            </ul>
+            <h4>Building</h4>
+            <p>We use</p>
+            <pre>grunt build</pre>
+            <p>to build the project.</p>
+            <p>This will do many things, including wiring dependencies to HTML files, compiling SCSS to CSS, minimizing CSS and uglifying JavaScript, modifying the code to support older browsers, etc.</p>
+            <p>You do not have to dig into details about how the project is built when doing this assignment.</p>
+            <h4>Serving</h4>
+            <p>In development, we use</p>
+            <pre>grunt serve</pre>
+            <p>to start the server.</p>
+            <p>This will automatically open a new tab in your browser and show <code>localhost:9000</code>. It will also watch files, check the syntax errors in the code, and automatically reload the page in the browser. </p>
+            <h4>Linting</h4>
+            <p>To check obvious syntax errors with JSHint, we use</p>
+            <pre>grunt jshint</pre>
+            <p>This will give you something similar to </p>
+            <img src="../assignment_spec_images/JSHint.png" class="img-responsive"></img>
+
+            <h4>Adding Dependencies</h4>
+            <p>You will use <code>bower</code> to add dependencies to the project: </p>
+            <pre>bower install --save &lt;dependency_name&gt;</pre>
+            <p>For example, if you are installing <code>underscore</code>, issue at the root of the project:</p>
+            <pre>bower install --save underscore</pre>
+            <p>Note that <code>--save</code> will write the dependency to <code>bower.json</code>.</p>
+            <p>You don't use <code>npm</code> to add dependencies, for it's used for pulling dependencies for the server, and you are only developing the front-end. </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

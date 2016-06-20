@@ -1,0 +1,73 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+/* Write your additonal styles below */
+html,body,#container{
+	height:100%;
+	margin:0;
+	padding:0;
+}
+
+.view {
+	left: 100px;
+	width: 400px;
+	top: 10px;
+	position: absolute;
+	z-index: 1;
+	opacity: 0.85;
+	filter: alpha(opacity=85);
+	overflow:hidden;
+}
+
+.searchList {
+	height: 250px;
+	overflow:auto;
+	padding: 0px;
+	margin: 0px;
+}
+
+.mybutton {
+	width:400px	
+}
+
+.buildingitem {
+	height:20px;
+	padding:0px;
+	width:10px;
+	margin:0px;
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 5px;
+}
+
+.outerdiv {
+	padding-bottom:5px;
+}
+
+.outerdiv:hover{
+	background-color: #ADD8E6;
+	cursor: pointer;
+}
+
+.cb {
+	width:20px;
+	height:20px;
+	cursor: pointer;
+}
+
+.checkt {
+	background-color: #5CB8E6;
+}
+
+.innerdiv {
+	display:inline-block;
+	vertical-align: middle;
+	width: 300px;
+	margin-left: 10px;
+	padding-left:15px;
+	padding-top: 6px; 
+	font-weight: bold;
+}
+

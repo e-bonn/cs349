@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Fotag!</title>
+
+    <!--
+    All of your CSS must go in css/fotag.css. Do not add styles to individual elements.
+    All of your CSS must be your own -- you may not use third-party CSS, like Bootstrap.
+    -->
+    <link rel="stylesheet" href="css/fotag.css"/>
+    <style>
+        .marking-button {
+            float:right;
+        }
+        .marking-div-clear {
+            clear:both;
+        }
+    </style>
+</head>
+<body>
+
+<!-- This header can be replaced -->
+<template id="toolbar-template">
+ <div class="toolbar-fixed">
+    <div>
+        <div class="layout-button">
+            <img class="label" src="assignment_spec_images/grid_view.png" width="100" height="65" data-index="1">
+        </div>
+        <div class="layout-button">
+            <img class="label" src="assignment_spec_images/list_view.png" width="100" height="65" data-index="2">
+        </div>
+        <h1>fotag</h1>
+        <div class="stars">
+            <h2>filter:</h2>
+            <div class="stars-toolbar">
+            </div>
+            <img class="clear-filter label" src="assignment_spec_images/x_mark_red.png" width="25" height="25">
+        </div>
+    </div>
+    <br>
+</div> 
+</template>
+
+<div class="container-class" id="app-container">
+
+</div>
+
+<!-- A template for a file chooser, to select multiple files. See FileChooser in view.js. -->
+<template id="file-chooser">
+    <input type="file" class="files-input" name="file_results[]" multiple />
+    <output id="list"></output>
+</template>
+
+<template id="imageModel">
+    <div class="inner-image-outer">
+        <div class="inner-image">
+            <img class="pic" src="">
+        </div>
+        <div class="info">
+            <div class="file-name"></div>
+            <div class="date"></div>
+            <div class="inner-rating">
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="ratingsView">
+    <img class="each-star" src="assignment_spec_images/star.png" width="25" height="25" data-index="1">
+    <img class="each-star" src="assignment_spec_images/star.png" width="25" height="25" data-index="2">
+    <img class="each-star" src="assignment_spec_images/star.png" width="25" height="25" data-index="3">
+    <img class="each-star" src="assignment_spec_images/star.png" width="25" height="25" data-index="4">
+    <img class="each-star" src="assignment_spec_images/star.png" width="25" height="25" data-index="5">
+</template>
+
+<template id="imageCollectionView">
+    <div class="imageCollectionView-div">
+    </div>
+</template>
+
+<template id="enlarge">
+    <img class="large-img" src="">
+</template>
+
+<!-- Keep this here so TAs can run your unit tests -->
+<div id="unit-tests">
+
+    <!-- This button is for marking purposes to test your architecture. Do not remove it-->
+    <button class="marking-button">Mark Me!</button>
+    <div class="marking-div-clear"></div>
+
+    <a href="unit_tests.html">Run Unit Tests</a>
+</div>
+
+<script src="js/ext/underscore.js"></script>
+<script src="js/model.js"></script>
+<script src="js/view.js"></script>
+<script src="js/fotag.js"></script>
+</body>
+</html>
